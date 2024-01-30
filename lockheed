@@ -103,7 +103,7 @@ command_explicit=
 debug_level=
 is_once=
 screenevent_title='unlock detected'
-screenevent_hint='Session.Unlock ()'
+screenevent_hint='{'LockedHint': <false>}'
 
 function parse_args() {
   local explicit_command=
@@ -210,7 +210,7 @@ esac
 
 assert_dependency gdbus
 
-gdbus monitor -y -d org.freedesktop.login1 |
+gdbus monitor --system --dest org.freedesktop.login1 |
   grep --line-buffered -o "$screenevent_hint" |
   while read -r; do
     emit "$screenevent_title"
