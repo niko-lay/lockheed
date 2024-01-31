@@ -1,0 +1,11 @@
+[Unit]
+Description=Audio mute on Screen Lock
+
+[Service]
+ExecStart=lockheed --lock -c muter.sh
+Restart=on-failure
+RestartSec=3s
+Type=exec
+
+[Install]
+WantedBy=default.target
